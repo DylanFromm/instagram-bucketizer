@@ -1,0 +1,10 @@
+---
+author_info:
+  name: Dylan Fromm
+  email: dylanfromm@hotmail.com
+  username: dylanfromm
+versions: ["3.8", "3.9", "3.10", "3.11"]
+
+systems:
+  - macos-latest
+  - windows-latest

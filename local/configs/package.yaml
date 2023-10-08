@@ -1,0 +1,10 @@
+---
+name: instagram-emoji-bucketizer
+version: "{{major}}.{{minor}}.{{patch}}"
+description: Short project description.
+entry: {{entry}}
+requirements:
+  - vcorelib
+dev_requirements:
+  - setuptools-wrapper
+  - types-setuptools
