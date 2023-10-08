@@ -5,10 +5,9 @@ import json
 from pathlib import Path
 from typing import Any, Dict, List, Union
 
+# third-party
 import emoji
 import instaloader
-
-# third-party
 from vcorelib.args import CommandFunction
 
 

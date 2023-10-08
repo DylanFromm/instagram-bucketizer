@@ -13,3 +13,5 @@ dev_requirements:
 commands:
   - name: parse_post
     description: parse a given post short code
+  - name: setup_session
+    description: Used firefox cookies to setup session file

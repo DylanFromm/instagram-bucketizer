@@ -2,7 +2,7 @@
     =====================================
     generator=datazen
     version=3.1.4
-    hash=5e51e206d1d6f8c5d7d5e9214e11ae12
+    hash=e3bfbd7f795b598599aa562dda211126
     =====================================
 -->
 
@@ -51,23 +51,25 @@ $ ./venv3.11/bin/instagram-emoji-bucketizer -h
 
 usage: instagram-emoji-bucketizer [-h] [--version] [-v] [-q] [--curses]
                                   [--no-uvloop] [-C DIR]
-                                  {parse_post,noop} ...
+                                  {parse_post,setup_session,noop} ...
 
 Short project description.
 
 options:
-  -h, --help         show this help message and exit
-  --version          show program's version number and exit
-  -v, --verbose      set to increase logging verbosity
-  -q, --quiet        set to reduce output
-  --curses           whether or not to use curses.wrapper when starting
-  --no-uvloop        whether or not to disable uvloop as event loop driver
-  -C DIR, --dir DIR  execute from a specific directory
+  -h, --help            show this help message and exit
+  --version             show program's version number and exit
+  -v, --verbose         set to increase logging verbosity
+  -q, --quiet           set to reduce output
+  --curses              whether or not to use curses.wrapper when starting
+  --no-uvloop           whether or not to disable uvloop as event loop driver
+  -C DIR, --dir DIR     execute from a specific directory
 
 commands:
-  {parse_post,noop}  set of available commands
-    parse_post       parse a given post short code
-    noop             command stub (does nothing)
+  {parse_post,setup_session,noop}
+                        set of available commands
+    parse_post          parse a given post short code
+    setup_session       Used firefox cookies to setup session file
+    noop                command stub (does nothing)
 
 ```
 
