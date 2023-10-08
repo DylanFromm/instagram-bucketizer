@@ -2,7 +2,7 @@
     =====================================
     generator=datazen
     version=3.1.4
-    hash=16c7ea4391d0cfaab8bbebc36c6e297d
+    hash=5e51e206d1d6f8c5d7d5e9214e11ae12
     =====================================
 -->
 
@@ -51,7 +51,7 @@ $ ./venv3.11/bin/instagram-emoji-bucketizer -h
 
 usage: instagram-emoji-bucketizer [-h] [--version] [-v] [-q] [--curses]
                                   [--no-uvloop] [-C DIR]
-                                  {noop} ...
+                                  {parse_post,noop} ...
 
 Short project description.
 
@@ -65,7 +65,8 @@ options:
   -C DIR, --dir DIR  execute from a specific directory
 
 commands:
-  {noop}             set of available commands
+  {parse_post,noop}  set of available commands
+    parse_post       parse a given post short code
     noop             command stub (does nothing)
 
 ```

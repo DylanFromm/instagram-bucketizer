@@ -1,1 +1,3 @@
 vcorelib
+instaloader
+emoji

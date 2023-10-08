@@ -5,6 +5,11 @@ description: Short project description.
 entry: {{entry}}
 requirements:
   - vcorelib
+  - instaloader
+  - emoji
 dev_requirements:
   - setuptools-wrapper
   - types-setuptools
+commands:
+  - name: parse_post
+    description: parse a given post short code
