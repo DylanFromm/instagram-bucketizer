@@ -1,7 +1,8 @@
 ---
 name: instagram-emoji-bucketizer
 version: "{{major}}.{{minor}}.{{patch}}"
-description: Short project description.
+description: Small project to assist in research\
+  categorizing instagram emoji usage
 entry: {{entry}}
 requirements:
   - vcorelib

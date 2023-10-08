@@ -17,9 +17,7 @@ from vcorelib.args import CommandRegister as _CommandRegister
 
 # internal
 from instagram_emoji_bucketizer.commands.parse_post import add_parse_post_cmd
-from instagram_emoji_bucketizer.commands.setup_session import (
-    add_setup_session_cmd,
-)
+from instagram_emoji_bucketizer.commands.setup_session import add_setup_session_cmd
 
 
 def commands() -> _List[_Tuple[str, str, _CommandRegister]]:

@@ -2,7 +2,7 @@
     =====================================
     generator=datazen
     version=3.1.4
-    hash=e3bfbd7f795b598599aa562dda211126
+    hash=de595ef0f3b2897d10b5936204e0cd70
     =====================================
 -->
 
@@ -14,7 +14,7 @@
 ![PyPI - Status](https://img.shields.io/pypi/status/instagram-emoji-bucketizer)
 ![Dependents (via libraries.io)](https://img.shields.io/librariesio/dependents/pypi/instagram-emoji-bucketizer)
 
-*Short project description.*
+*Small project to assist in research\ categorizing instagram emoji usage*
 
 ## Documentation
 
@@ -53,7 +53,7 @@ usage: instagram-emoji-bucketizer [-h] [--version] [-v] [-q] [--curses]
                                   [--no-uvloop] [-C DIR]
                                   {parse_post,setup_session,noop} ...
 
-Short project description.
+Small project to assist in research\ categorizing instagram emoji usage
 
 options:
   -h, --help            show this help message and exit
