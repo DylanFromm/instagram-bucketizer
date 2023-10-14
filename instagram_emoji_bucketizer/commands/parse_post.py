@@ -1,5 +1,4 @@
 import argparse
-from collections import OrderedDict
 from datetime import datetime
 import json
 from pathlib import Path
@@ -49,31 +48,41 @@ def normalize_to_dict(args: argparse.ArgumentParser) -> List[Dict[str, Any]]:
         loader.load_session_from_file(args.username)
         post = instaloader.Post.from_shortcode(loader.context, args.post_code)
 
-        for comment in post.get_comments():
-            ret_data.append(
-                {
-                    "id": comment.id,
-                    "created_at": normalize_to_datestr(comment.created_at_utc),
-                    "text": comment.text,
-                    "username": comment.owner.username,
-                    "likes_count": comment.likes_count,
-                    "answers": sorted(
-                        [
-                            {
-                                "id": answer.id,
-                                "created_at": normalize_to_datestr(
-                                    answer.created_at_utc
-                                ),
-                                "text": answer.text,
-                                "username": answer.owner.username,
-                                "likes_count": answer.likes_count,
-                            }
-                            for answer in comment.answers
-                        ],
-                        key=lambda x: normalize_to_epoch(x["created_at"]),
-                    ),
-                }
-            )
+        with loader.context.error_catcher("Comment Parsing:"):
+            num_comments = 0
+            print(f"Getting {post.comments} comments")
+            for comment in post.get_comments():
+                num_comments += 1
+                ret_data.append(
+                    {
+                        "id": comment.id,
+                        "created_at": normalize_to_datestr(
+                            comment.created_at_utc
+                        ),
+                        "text": comment.text,
+                        "username": comment.owner.username,
+                        "likes_count": comment.likes_count,
+                        "answers": sorted(
+                            [
+                                {
+                                    "id": answer.id,
+                                    "created_at": normalize_to_datestr(
+                                        answer.created_at_utc
+                                    ),
+                                    "text": answer.text,
+                                    "username": answer.owner.username,
+                                    "likes_count": answer.likes_count,
+                                }
+                                for answer in comment.answers
+                            ],
+                            key=lambda x: normalize_to_epoch(x["created_at"]),
+                        ),
+                    }
+                )
+                if num_comments % 250 == 0:
+                    print(f"on {num_comments}/{post.comments}")
+            print(f"Got {num_comments} comments")
+
     return ret_data
 
 

@@ -12,7 +12,9 @@ instagram-emoji-bucketizer - Package definition for distribution.
 try:
     from setuptools_wrapper.setup import setup
 except (ImportError, ModuleNotFoundError):
-    from instagram_emoji_bucketizer_bootstrap.setup import setup  # type: ignore
+    from instagram_emoji_bucketizer_bootstrap.setup import (
+        setup,  # type: ignore
+    )
 
 # internal
 from instagram_emoji_bucketizer import DESCRIPTION, PKG_NAME, VERSION

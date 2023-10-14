@@ -1,17 +1,21 @@
 ---
 name: instagram-emoji-bucketizer
 version: "{{major}}.{{minor}}.{{patch}}"
-description: Small project to assist in research\
+description: Small project to assist in research,
   categorizing instagram emoji usage
 entry: {{entry}}
 requirements:
   - vcorelib
   - instaloader
   - emoji
+  - pandas
+  - openpyxl
 dev_requirements:
   - setuptools-wrapper
   - types-setuptools
 commands:
+  - name: bucketize
+    description: bucketize comments
   - name: parse_post
     description: parse a given post short code
   - name: setup_session

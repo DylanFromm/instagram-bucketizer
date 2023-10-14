@@ -2,7 +2,7 @@
     =====================================
     generator=datazen
     version=3.1.4
-    hash=de595ef0f3b2897d10b5936204e0cd70
+    hash=3bef0ebcf29370b9f481f98caea70acc
     =====================================
 -->
 
@@ -14,7 +14,7 @@
 ![PyPI - Status](https://img.shields.io/pypi/status/instagram-emoji-bucketizer)
 ![Dependents (via libraries.io)](https://img.shields.io/librariesio/dependents/pypi/instagram-emoji-bucketizer)
 
-*Small project to assist in research\ categorizing instagram emoji usage*
+*Small project to assist in research, categorizing instagram emoji usage*
 
 ## Documentation
 
@@ -51,9 +51,10 @@ $ ./venv3.11/bin/instagram-emoji-bucketizer -h
 
 usage: instagram-emoji-bucketizer [-h] [--version] [-v] [-q] [--curses]
                                   [--no-uvloop] [-C DIR]
-                                  {parse_post,setup_session,noop} ...
+                                  {bucketize,parse_post,setup_session,noop}
+                                  ...
 
-Small project to assist in research\ categorizing instagram emoji usage
+Small project to assist in research, categorizing instagram emoji usage
 
 options:
   -h, --help            show this help message and exit
@@ -65,8 +66,9 @@ options:
   -C DIR, --dir DIR     execute from a specific directory
 
 commands:
-  {parse_post,setup_session,noop}
+  {bucketize,parse_post,setup_session,noop}
                         set of available commands
+    bucketize           bucketize comments
     parse_post          parse a given post short code
     setup_session       Used firefox cookies to setup session file
     noop                command stub (does nothing)

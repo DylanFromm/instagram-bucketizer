@@ -1,7 +1,7 @@
 # =====================================
 # generator=datazen
 # version=3.1.4
-# hash=e089681cf6e1f799786bdae26b8a857f
+# hash=aa95ae600c501abb5b60f2fc6c1c7d25
 # =====================================
 
 """
@@ -16,14 +16,22 @@ from typing import Tuple as _Tuple
 from vcorelib.args import CommandRegister as _CommandRegister
 
 # internal
+from instagram_emoji_bucketizer.commands.bucketize import add_bucketize_cmd
 from instagram_emoji_bucketizer.commands.parse_post import add_parse_post_cmd
-from instagram_emoji_bucketizer.commands.setup_session import add_setup_session_cmd
+from instagram_emoji_bucketizer.commands.setup_session import (
+    add_setup_session_cmd,
+)
 
 
 def commands() -> _List[_Tuple[str, str, _CommandRegister]]:
     """Get this package's commands."""
 
     return [
+        (
+            "bucketize",
+            "bucketize comments",
+            add_bucketize_cmd,
+        ),
         (
             "parse_post",
             "parse a given post short code",
