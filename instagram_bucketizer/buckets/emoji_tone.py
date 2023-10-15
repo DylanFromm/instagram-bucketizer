@@ -5,7 +5,7 @@ from typing import Type
 import emoji as _emoji
 
 # internal
-from instagram_emoji_bucketizer.buckets import (
+from instagram_bucketizer.buckets import (
     EN_EMOJI_TO_UNICODE,
     Bucket,
     Comment,

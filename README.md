@@ -2,17 +2,17 @@
     =====================================
     generator=datazen
     version=3.1.4
-    hash=3bef0ebcf29370b9f481f98caea70acc
+    hash=433bf8944d18413ea24ab46e37345bd2
     =====================================
 -->
 
-# instagram-emoji-bucketizer ([0.1.0](https://pypi.org/project/instagram-emoji-bucketizer/))
+# instagram-bucketizer ([0.1.0](https://pypi.org/project/instagram-bucketizer/))
 
-[![python](https://img.shields.io/pypi/pyversions/instagram-emoji-bucketizer.svg)](https://pypi.org/project/instagram-emoji-bucketizer/)
-![Build Status](https://github.com/dylanfromm/instagram-emoji-bucketizer/workflows/Python%20Package/badge.svg)
-[![codecov](https://codecov.io/gh/dylanfromm/instagram-emoji-bucketizer/branch/master/graphs/badge.svg?branch=master)](https://codecov.io/github/dylanfromm/instagram-emoji-bucketizer)
-![PyPI - Status](https://img.shields.io/pypi/status/instagram-emoji-bucketizer)
-![Dependents (via libraries.io)](https://img.shields.io/librariesio/dependents/pypi/instagram-emoji-bucketizer)
+[![python](https://img.shields.io/pypi/pyversions/instagram-bucketizer.svg)](https://pypi.org/project/instagram-bucketizer/)
+![Build Status](https://github.com/dylanfromm/instagram-bucketizer/workflows/Python%20Package/badge.svg)
+[![codecov](https://codecov.io/gh/dylanfromm/instagram-bucketizer/branch/master/graphs/badge.svg?branch=master)](https://codecov.io/github/dylanfromm/instagram-bucketizer)
+![PyPI - Status](https://img.shields.io/pypi/status/instagram-bucketizer)
+![Dependents (via libraries.io)](https://img.shields.io/librariesio/dependents/pypi/instagram-bucketizer)
 
 *Small project to assist in research, categorizing instagram emoji usage*
 
@@ -20,9 +20,9 @@
 
 ### Generated
 
-* By [sphinx-apidoc](https://dylanfromm.github.io/python/sphinx/instagram-emoji-bucketizer)
+* By [sphinx-apidoc](https://dylanfromm.github.io/python/sphinx/instagram-bucketizer)
 (What's [`sphinx-apidoc`](https://www.sphinx-doc.org/en/master/man/sphinx-apidoc.html)?)
-* By [pydoc](https://dylanfromm.github.io/python/pydoc/instagram_emoji_bucketizer.html)
+* By [pydoc](https://dylanfromm.github.io/python/pydoc/instagram_bucketizer.html)
 (What's [`pydoc`](https://docs.python.org/3/library/pydoc.html)?)
 
 ## Python Version Support
@@ -47,12 +47,11 @@ This package is tested on the following platforms:
 # Command-line Options
 
 ```
-$ ./venv3.11/bin/instagram-emoji-bucketizer -h
+$ ./venv3.11/bin/instagram-bucketizer -h
 
-usage: instagram-emoji-bucketizer [-h] [--version] [-v] [-q] [--curses]
-                                  [--no-uvloop] [-C DIR]
-                                  {bucketize,parse_post,setup_session,noop}
-                                  ...
+usage: instagram-bucketizer [-h] [--version] [-v] [-q] [--curses]
+                            [--no-uvloop] [-C DIR]
+                            {bucketize,parse_post,setup_session,noop} ...
 
 Small project to assist in research, categorizing instagram emoji usage
 
@@ -78,8 +77,8 @@ commands:
 # Internal Dependency Graph
 
 A coarse view of the internal structure and scale of
-`instagram-emoji-bucketizer`'s source.
+`instagram-bucketizer`'s source.
 Generated using [pydeps](https://github.com/thebjorn/pydeps) (via
 `mk python-deps`).
 
-![instagram-emoji-bucketizer's Dependency Graph](im/pydeps.svg)
+![instagram-bucketizer's Dependency Graph](im/pydeps.svg)

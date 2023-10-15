@@ -1,7 +1,7 @@
 # =====================================
 # generator=datazen
 # version=3.1.4
-# hash=7ff40773f5e0ae4c7b155ffd7fe4374e
+# hash=3cbedafc8f4a95c733b3b66bf11fb19f
 # =====================================
 
 """
@@ -18,7 +18,7 @@ from vcorelib.args import CommandFunction as _CommandFunction
 from vcorelib.args import app_args as _app_args
 
 # internal
-from instagram_emoji_bucketizer.commands.all import commands
+from instagram_bucketizer.commands.all import commands
 
 COMMAND: _Optional[_CommandFunction] = None
 

@@ -14,7 +14,7 @@ from vcorelib.args import CommandFunction
 from vcorelib.paths import normalize
 
 # internal
-from instagram_emoji_bucketizer.buckets import Comment, Comments
+from instagram_bucketizer.buckets import Comment, Comments
 
 
 def normalize_to_datestr(date: Union[str, int, datetime]) -> str:

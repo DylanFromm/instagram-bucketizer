@@ -1,7 +1,7 @@
 # =====================================
 # generator=datazen
 # version=3.1.4
-# hash=dd5b8382e1767e5e3b69e3d751eebca0
+# hash=84623cb05743f31ba95d570b094a4e4a
 # =====================================
 
 """
@@ -19,8 +19,8 @@ from typing import List
 from vcorelib.logging import init_logging, logging_args
 
 # internal
-from instagram_emoji_bucketizer import DESCRIPTION, VERSION
-from instagram_emoji_bucketizer.app import add_app_args, entry
+from instagram_bucketizer import DESCRIPTION, VERSION
+from instagram_bucketizer.app import add_app_args, entry
 
 
 def main(argv: List[str] = None) -> int:

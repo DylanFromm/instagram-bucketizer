@@ -9,62 +9,62 @@
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 521.69)">
 <title>G</title><style>.edge>path:hover{stroke-width:8}</style>
 <polygon fill="white" stroke="transparent" points="-4,4 -4,-521.69 595.24,-521.69 595.24,4 -4,4"/>
-<!-- instagram_emoji_bucketizer___main__ -->
+<!-- instagram_bucketizer___main__ -->
 <g id="node1" class="node">
-<title>instagram_emoji_bucketizer___main__</title><style>.edge>path:hover{stroke-width:8}</style>
+<title>instagram_bucketizer___main__</title><style>.edge>path:hover{stroke-width:8}</style>
 <ellipse fill="#ac4949" stroke="black" cx="162.14" cy="-21.21" rx="111.03" ry="21.43"/>
-<text text-anchor="middle" x="162.14" y="-24.21" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#ffffff">instagram_emoji_bucketizer.</text>
+<text text-anchor="middle" x="162.14" y="-24.21" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#ffffff">instagram_bucketizer.</text>
 <text text-anchor="middle" x="162.14" y="-13.21" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#ffffff">__main__</text>
 </g>
-<!-- instagram_emoji_bucketizer_app -->
+<!-- instagram_bucketizer_app -->
 <g id="node2" class="node">
-<title>instagram_emoji_bucketizer_app</title><style>.edge>path:hover{stroke-width:8}</style>
+<title>instagram_bucketizer_app</title><style>.edge>path:hover{stroke-width:8}</style>
 <ellipse fill="#a13535" stroke="black" cx="162.14" cy="-178.07" rx="111.03" ry="21.43"/>
-<text text-anchor="middle" x="162.14" y="-181.07" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#ffffff">instagram_emoji_bucketizer.</text>
+<text text-anchor="middle" x="162.14" y="-181.07" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#ffffff">instagram_bucketizer.</text>
 <text text-anchor="middle" x="162.14" y="-170.07" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#ffffff">app</text>
 </g>
-<!-- instagram_emoji_bucketizer_entry -->
+<!-- instagram_bucketizer_entry -->
 <g id="node5" class="node">
-<title>instagram_emoji_bucketizer_entry</title><style>.edge>path:hover{stroke-width:8}</style>
+<title>instagram_bucketizer_entry</title><style>.edge>path:hover{stroke-width:8}</style>
 <ellipse fill="#a83838" stroke="black" cx="162.14" cy="-99.64" rx="111.03" ry="21.43"/>
-<text text-anchor="middle" x="162.14" y="-102.64" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#ffffff">instagram_emoji_bucketizer.</text>
+<text text-anchor="middle" x="162.14" y="-102.64" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#ffffff">instagram_bucketizer.</text>
 <text text-anchor="middle" x="162.14" y="-91.64" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#ffffff">entry</text>
 </g>
-<!-- instagram_emoji_bucketizer_app&#45;&gt;instagram_emoji_bucketizer_entry -->
+<!-- instagram_bucketizer_app&#45;&gt;instagram_bucketizer_entry -->
 <g id="edge1" class="edge">
-<title>instagram_emoji_bucketizer_app&#45;&gt;instagram_emoji_bucketizer_entry</title><style>.edge>path:hover{stroke-width:8}</style>
+<title>instagram_bucketizer_app&#45;&gt;instagram_bucketizer_entry</title><style>.edge>path:hover{stroke-width:8}</style>
 <path fill="none" stroke="black" d="M162.14,-156.59C162.14,-148.73 162.14,-139.58 162.14,-130.99"/>
 <polygon fill="#a13535" stroke="black" points="165.64,-130.91 162.14,-120.91 158.64,-130.91 165.64,-130.91"/>
 </g>
-<!-- instagram_emoji_bucketizer_commands -->
+<!-- instagram_bucketizer_commands -->
 <g id="node3" class="node">
-<title>instagram_emoji_bucketizer_commands</title><style>.edge>path:hover{stroke-width:8}</style>
+<title>instagram_bucketizer_commands</title><style>.edge>path:hover{stroke-width:8}</style>
 <ellipse fill="#c24747" stroke="black" cx="127.14" cy="-256.49" rx="111.03" ry="21.43"/>
-<text text-anchor="middle" x="127.14" y="-259.49" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#ffffff">instagram_emoji_bucketizer.</text>
+<text text-anchor="middle" x="127.14" y="-259.49" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#ffffff">instagram_bucketizer.</text>
 <text text-anchor="middle" x="127.14" y="-248.49" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#ffffff">commands</text>
 </g>
-<!-- instagram_emoji_bucketizer_commands&#45;&gt;instagram_emoji_bucketizer_app -->
+<!-- instagram_bucketizer_commands&#45;&gt;instagram_bucketizer_app -->
 <g id="edge2" class="edge">
-<title>instagram_emoji_bucketizer_commands&#45;&gt;instagram_emoji_bucketizer_app</title><style>.edge>path:hover{stroke-width:8}</style>
+<title>instagram_bucketizer_commands&#45;&gt;instagram_bucketizer_app</title><style>.edge>path:hover{stroke-width:8}</style>
 <path fill="none" stroke="black" d="M136.52,-235.01C140.24,-226.89 144.59,-217.4 148.63,-208.57"/>
 <polygon fill="#c24747" stroke="black" points="151.88,-209.89 152.86,-199.34 145.51,-206.97 151.88,-209.89"/>
 </g>
-<!-- instagram_emoji_bucketizer_commands_all -->
+<!-- instagram_bucketizer_commands_all -->
 <g id="node4" class="node">
-<title>instagram_emoji_bucketizer_commands_all</title><style>.edge>path:hover{stroke-width:8}</style>
+<title>instagram_bucketizer_commands_all</title><style>.edge>path:hover{stroke-width:8}</style>
 <ellipse fill="#b83d3d" stroke="black" cx="405.14" cy="-342.7" rx="111.03" ry="28.98"/>
-<text text-anchor="middle" x="405.14" y="-351.2" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#ffffff">instagram_emoji_bucketizer.</text>
+<text text-anchor="middle" x="405.14" y="-351.2" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#ffffff">instagram_bucketizer.</text>
 <text text-anchor="middle" x="405.14" y="-340.2" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#ffffff">commands.</text>
 <text text-anchor="middle" x="405.14" y="-329.2" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#ffffff">all</text>
 </g>
-<!-- instagram_emoji_bucketizer_commands_all&#45;&gt;instagram_emoji_bucketizer_app -->
+<!-- instagram_bucketizer_commands_all&#45;&gt;instagram_bucketizer_app -->
 <g id="edge3" class="edge">
-<title>instagram_emoji_bucketizer_commands_all&#45;&gt;instagram_emoji_bucketizer_app</title><style>.edge>path:hover{stroke-width:8}</style>
+<title>instagram_bucketizer_commands_all&#45;&gt;instagram_bucketizer_app</title><style>.edge>path:hover{stroke-width:8}</style>
 <path fill="none" stroke="black" d="M350.6,-317.35C329.24,-306.63 305.11,-292.99 285.14,-277.71 275.35,-270.21 276.32,-264.46 266.14,-257.49"/>
 </g>
-<!-- instagram_emoji_bucketizer_entry&#45;&gt;instagram_emoji_bucketizer___main__ -->
+<!-- instagram_bucketizer_entry&#45;&gt;instagram_bucketizer___main__ -->
 <g id="edge4" class="edge">
-<title>instagram_emoji_bucketizer_entry&#45;&gt;instagram_emoji_bucketizer___main__</title><style>.edge>path:hover{stroke-width:8}</style>
+<title>instagram_bucketizer_entry&#45;&gt;instagram_bucketizer___main__</title><style>.edge>path:hover{stroke-width:8}</style>
 <path fill="none" stroke="black" d="M162.14,-78.16C162.14,-70.3 162.14,-61.16 162.14,-52.57"/>
 <polygon fill="#a83838" stroke="black" points="165.64,-52.49 162.14,-42.49 158.64,-52.49 165.64,-52.49"/>
 </g>
@@ -74,22 +74,22 @@
 <ellipse fill="#2fdbdb" stroke="black" cx="405.14" cy="-499.69" rx="32.93" ry="18"/>
 <text text-anchor="middle" x="405.14" y="-497.19" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">vcorelib</text>
 </g>
-<!-- vcorelib&#45;&gt;instagram_emoji_bucketizer_app -->
+<!-- vcorelib&#45;&gt;instagram_bucketizer_app -->
 <g id="edge5" class="edge">
-<title>vcorelib&#45;&gt;instagram_emoji_bucketizer_app</title><style>.edge>path:hover{stroke-width:8}</style>
+<title>vcorelib&#45;&gt;instagram_bucketizer_app</title><style>.edge>path:hover{stroke-width:8}</style>
 <path fill="none" stroke="black" d="M266.14,-341.7C233.26,-323.83 297.02,-278.64 266.14,-257.49"/>
 <path fill="none" stroke="black" d="M266.14,-255.49C255.97,-248.52 256.57,-243.23 247.14,-235.28 233.81,-224.04 218.15,-213.13 203.92,-203.95"/>
 <polygon fill="#2fdbdb" stroke="black" points="205.61,-200.87 195.29,-198.47 201.86,-206.79 205.61,-200.87"/>
 </g>
-<!-- vcorelib&#45;&gt;instagram_emoji_bucketizer_commands_all -->
+<!-- vcorelib&#45;&gt;instagram_bucketizer_commands_all -->
 <g id="edge6" class="edge">
-<title>vcorelib&#45;&gt;instagram_emoji_bucketizer_commands_all</title><style>.edge>path:hover{stroke-width:8}</style>
+<title>vcorelib&#45;&gt;instagram_bucketizer_commands_all</title><style>.edge>path:hover{stroke-width:8}</style>
 <path fill="none" stroke="black" d="M405.14,-407.69C401.69,-399.7 400.36,-390.6 400.16,-381.83"/>
 <polygon fill="#2fdbdb" stroke="black" points="403.66,-381.85 400.4,-371.77 396.66,-381.68 403.66,-381.85"/>
 </g>
-<!-- vcorelib&#45;&gt;instagram_emoji_bucketizer_entry -->
+<!-- vcorelib&#45;&gt;instagram_bucketizer_entry -->
 <g id="edge7" class="edge">
-<title>vcorelib&#45;&gt;instagram_emoji_bucketizer_entry</title><style>.edge>path:hover{stroke-width:8}</style>
+<title>vcorelib&#45;&gt;instagram_bucketizer_entry</title><style>.edge>path:hover{stroke-width:8}</style>
 <path fill="none" stroke="black" d="M409.02,-481.63C412.41,-462.9 415.36,-432.36 405.14,-408.69"/>
 <path fill="none" stroke="black" d="M405.14,-407.69C378.4,-358.85 330.04,-404.63 285.14,-371.69 273.02,-362.79 279.36,-350.88 266.14,-343.7"/>
 <path fill="none" stroke="black" d="M266.14,-341.7C161.96,-285.09 80.24,-371.06 7.14,-277.71 -19.83,-243.26 41.89,-157.11 42.14,-156.85 56.9,-141.83 76.44,-130.36 95.46,-121.83"/>
@@ -101,14 +101,14 @@
 <ellipse fill="#47c2c2" stroke="black" cx="544.14" cy="-499.69" rx="47.19" ry="18"/>
 <text text-anchor="middle" x="544.14" y="-497.19" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">vcorelib.args</text>
 </g>
-<!-- vcorelib_args&#45;&gt;instagram_emoji_bucketizer_app -->
+<!-- vcorelib_args&#45;&gt;instagram_bucketizer_app -->
 <g id="edge8" class="edge">
-<title>vcorelib_args&#45;&gt;instagram_emoji_bucketizer_app</title><style>.edge>path:hover{stroke-width:8}</style>
+<title>vcorelib_args&#45;&gt;instagram_bucketizer_app</title><style>.edge>path:hover{stroke-width:8}</style>
 <path fill="none" stroke="black" d="M544.14,-407.69C523.67,-370.31 556.03,-343.07 525.14,-313.71 446.97,-239.39 380.68,-327.76 285.14,-277.71 274.22,-271.98 276.32,-264.46 266.14,-257.49"/>
 </g>
-<!-- vcorelib_args&#45;&gt;instagram_emoji_bucketizer_commands_all -->
+<!-- vcorelib_args&#45;&gt;instagram_bucketizer_commands_all -->
 <g id="edge9" class="edge">
-<title>vcorelib_args&#45;&gt;instagram_emoji_bucketizer_commands_all</title><style>.edge>path:hover{stroke-width:8}</style>
+<title>vcorelib_args&#45;&gt;instagram_bucketizer_commands_all</title><style>.edge>path:hover{stroke-width:8}</style>
 <path fill="none" stroke="black" d="M548.02,-481.63C551.41,-462.9 554.36,-432.36 544.14,-408.69"/>
 <path fill="none" stroke="black" d="M544.14,-407.69C533.9,-388.98 516.41,-375.71 497.23,-366.31"/>
 <polygon fill="#47c2c2" stroke="black" points="498.56,-363.08 488.01,-362.13 495.67,-369.45 498.56,-363.08"/>
@@ -120,9 +120,9 @@
 <text text-anchor="middle" x="336.14" y="-259.49" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">vcorelib.</text>
 <text text-anchor="middle" x="336.14" y="-248.49" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">logging</text>
 </g>
-<!-- vcorelib_logging&#45;&gt;instagram_emoji_bucketizer_entry -->
+<!-- vcorelib_logging&#45;&gt;instagram_bucketizer_entry -->
 <g id="edge10" class="edge">
-<title>vcorelib_logging&#45;&gt;instagram_emoji_bucketizer_entry</title><style>.edge>path:hover{stroke-width:8}</style>
+<title>vcorelib_logging&#45;&gt;instagram_bucketizer_entry</title><style>.edge>path:hover{stroke-width:8}</style>
 <path fill="none" stroke="black" d="M329.43,-235.32C321.27,-213.51 305.63,-178.9 282.14,-156.85 266.51,-142.17 246.34,-130.72 227.02,-122.11"/>
 <polygon fill="#3db8b8" stroke="black" points="228.2,-118.8 217.63,-118.1 225.45,-125.24 228.2,-118.8"/>
 </g>

@@ -12,7 +12,7 @@ from pathlib import Path
 from vcorelib.args import CommandFunction
 
 # internal
-from instagram_emoji_bucketizer.buckets.bucketizer import Bucketizer
+from instagram_bucketizer.buckets.bucketizer import Bucketizer
 
 
 def bucketize_cmd(args: argparse.Namespace):

@@ -2,9 +2,9 @@
 default_target: groups-all
 
 params:
-  project: instagram_emoji_bucketizer
+  project: instagram_bucketizer
   python_version: "$PYTHON_VERSION"
-  entry: instagram-emoji-bucketizer
+  entry: instagram-bucketizer
 
 includes:
   - config/includes/python.yaml

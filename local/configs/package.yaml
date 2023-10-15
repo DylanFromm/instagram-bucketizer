@@ -1,5 +1,5 @@
 ---
-name: instagram-emoji-bucketizer
+name: instagram-bucketizer
 version: "{{major}}.{{minor}}.{{patch}}"
 description: Small project to assist in research,
   categorizing instagram emoji usage

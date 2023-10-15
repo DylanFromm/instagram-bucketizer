@@ -12,14 +12,14 @@ import pandas as pd
 from vcorelib.paths import Pathlike, normalize
 
 # internal
-from instagram_emoji_bucketizer.buckets import (
+from instagram_bucketizer.buckets import (
     Bucket,
     Comment,
     Comments,
     DataColumns,
     TBucket,
 )
-from instagram_emoji_bucketizer.buckets.emoji_tone import SkinToneBucket
+from instagram_bucketizer.buckets.emoji_tone import SkinToneBucket
 
 
 def get_available_buckets() -> List[str]:

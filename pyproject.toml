@@ -3,7 +3,7 @@ requires = ["setuptools-wrapper", "trove-classifiers"]
 build-backend = "setuptools.build_meta:__legacy__"
 
 [project]
-name = "instagram-emoji-bucketizer"
+name = "instagram-bucketizer"
 version = "0.1.0"
 description = "Small project to assist in research, categorizing instagram emoji usage"
 readme = "README.md"
@@ -46,4 +46,4 @@ test = [
 ]
 
 [project.scripts]
-instagram-emoji-bucketizer = "instagram_emoji_bucketizer.entry:main"
+instagram-bucketizer = "instagram_bucketizer.entry:main"
