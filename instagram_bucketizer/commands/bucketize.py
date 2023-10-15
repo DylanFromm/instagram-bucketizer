@@ -12,7 +12,7 @@ from pathlib import Path
 from vcorelib.args import CommandFunction
 
 # internal
-from instagram_bucketizer.buckets.bucketizer import Bucketizer
+from instagram_bucketizer.buckets.bucketizer import Bucketizer, get_available_buckets
 
 
 def bucketize_cmd(args: argparse.Namespace):
@@ -42,5 +42,7 @@ def add_bucketize_cmd(parser: argparse.ArgumentParser) -> CommandFunction:
         default=Path("output.xlsx"),
         help="Path to output comments loaded from a post, defaults output.xlsx",
     )
-    parser.add_argument("--bucket", "-b", required=True, type=str)
+    parser.add_argument("--bucket", "-b", 
+                        help=f"Available: {get_available_buckets()}",
+                        required=True, type=str)
     return bucketize_cmd
