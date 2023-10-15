@@ -10,6 +10,7 @@ requirements:
   - emoji
   - pandas
   - openpyxl
+  - tdqm
 dev_requirements:
   - setuptools-wrapper
   - types-setuptools

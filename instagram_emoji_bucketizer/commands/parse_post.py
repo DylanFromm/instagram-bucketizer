@@ -1,13 +1,20 @@
+# built-in
 import argparse
 from datetime import datetime
 import json
 from pathlib import Path
 from typing import Any, Dict, List, Union
+import time
 
 # third-party
 import emoji
 import instaloader
+from tqdm import tqdm
 from vcorelib.args import CommandFunction
+from vcorelib.paths import normalize
+
+# internal
+from instagram_emoji_bucketizer.buckets import Comment, Comments
 
 
 def normalize_to_datestr(date: Union[str, int, datetime]) -> str:
@@ -30,100 +37,95 @@ def normalize_to_epoch(date: Union[str, int, datetime]) -> int:
         return date.timestamp()
     assert False, f"Given data {date} is invalid! {type(date)}"
 
-
-def normalize_to_dict(args: argparse.ArgumentParser) -> List[Dict[str, Any]]:
-    """
-    If given a comment file, parse and return dictionary
-    if given a post code, get data, load into dictionary and return
-    """
-
-    ret_data: List[Dict[str, Any]] = []
-    if args.comments_file:
-        if args.comments_file.is_file():
-            with open(args.comments_file, "r") as com_file:
-                ret_data = json.load(com_file)
-    elif args.post_code:
-        assert args.username, "No username provided!"
-        loader = instaloader.Instaloader()
-        loader.load_session_from_file(args.username)
-        post = instaloader.Post.from_shortcode(loader.context, args.post_code)
-
-        with loader.context.error_catcher("Comment Parsing:"):
-            num_comments = 0
-            print(f"Getting {post.comments} comments")
-            for comment in post.get_comments():
-                num_comments += 1
-                ret_data.append(
-                    {
-                        "id": comment.id,
-                        "created_at": normalize_to_datestr(
-                            comment.created_at_utc
-                        ),
-                        "text": comment.text,
-                        "username": comment.owner.username,
-                        "likes_count": comment.likes_count,
-                        "answers": sorted(
-                            [
-                                {
-                                    "id": answer.id,
-                                    "created_at": normalize_to_datestr(
-                                        answer.created_at_utc
-                                    ),
-                                    "text": answer.text,
-                                    "username": answer.owner.username,
-                                    "likes_count": answer.likes_count,
-                                }
-                                for answer in comment.answers
-                            ],
-                            key=lambda x: normalize_to_epoch(x["created_at"]),
-                        ),
-                    }
-                )
-                if num_comments % 250 == 0:
-                    print(f"on {num_comments}/{post.comments}")
-            print(f"Got {num_comments} comments")
-
-    return ret_data
-
-
 def to_emoji_str(emoji_str: str) -> str:
     return emoji_str.encode("utf-16-be", "surrogatepass").decode("utf-16-be")
 
-
-def parse_post_cmd(args: argparse.Namespace):
-    comments_data = normalize_to_dict(args)
-
-    if not comments_data:
-        assert False, "No data found with given arguments!"
-
+def write_post(args: argparse.ArgumentParser, post_code: str, comments: Comments) -> None:
+    """
+    Write data out
+    """
+    output_dir = normalize(args.output_dir)
+    output_dir.mkdir(parents=True, exist_ok=True)
     sorted_data = sorted(
-        comments_data, key=lambda x: normalize_to_epoch(x["created_at"])
+        comments, key=lambda x: normalize_to_epoch(x["created_at"])
     )
     for i in range(0, len(sorted_data)):
         sorted_data[i]["text"] = emoji.demojize(
             to_emoji_str(sorted_data[i]["text"])
         )
 
-    with open(args.output_comments, "w") as com_file:
-        com_file.write(json.dumps(sorted_data, indent=4))
+    full_out = {"post_code": post_code, "comments": sorted_data}
+    with open(
+        output_dir.joinpath(f"{args.prefix}_{post_code}.json"), "w"
+    ) as com_file:
+        com_file.write(json.dumps(full_out, indent=4))
 
+def parse_post_cmd(args: argparse.Namespace):
+    """
+    for each post code, get data, load into dictionary and return
+    """
+    assert args.username, "No username provided!"
+    loader = instaloader.Instaloader()
+    loader.load_session_from_file(args.username)
+
+    for post_code in args.post_codes:
+        post = instaloader.Post.from_shortcode(loader.context, post_code)
+        print(f"Loading comments from {post_code}")
+        with loader.context.error_catcher("Comment Parsing:"):
+            ret_data: Comments = []
+            with tqdm(total=post.comments) as progress_counter:
+                for comment in post.get_comments():
+                    ret_data.append(
+                        {
+                            "id": comment.id,
+                            "created_at": normalize_to_datestr(
+                                comment.created_at_utc
+                            ),
+                            "text": comment.text,
+                            "username": comment.owner.username,
+                            "likes_count": comment.likes_count,
+                            "answers": sorted(
+                                [
+                                    {
+                                        "id": answer.id,
+                                        "created_at": normalize_to_datestr(
+                                            answer.created_at_utc
+                                        ),
+                                        "text": answer.text,
+                                        "username": answer.owner.username,
+                                        "likes_count": answer.likes_count,
+                                    }
+                                    for answer in comment.answers
+                                ],
+                                key=lambda x: normalize_to_epoch(
+                                    x["created_at"]
+                                ),
+                            ),
+                        }
+                    )
+                    progress_counter.update(1)
+            write_post(args, post_code, ret_data)
+
+        if post_code != args.post_codes[-1]:
+            for _ in tqdm(range(args.wait)):
+                time.sleep(1)
 
 def add_parse_post_cmd(parser: argparse.ArgumentParser) -> CommandFunction:
     """Add arbiter-command arguments to its parser."""
     parser.add_argument(
-        "-p", "--post_code", help="Post code to parse", type=str
-    )
-    parser.add_argument(
-        "--comments_file",
-        help="Path to comments file to load without querying instagram",
-        type=Path,
-        default=None,
+        "post_codes", nargs="+", help="Post codes to parse", type=str
     )
     parser.add_argument("-u", "--username", type=str)
     parser.add_argument(
-        "--output_comments",
+        "--output_dir",
         type=Path,
-        default=Path("comments.json"),
-        help="Path to output comments loaded from a post, defaults comments.json",
+        default=Path("."),
+        help="Path to output comments from posts, defaults to current directory",
+    )
+    parser.add_argument(
+        "-P", "--prefix", help="Output file prefix", default=""
+    )
+    parser.add_argument(
+        "-w", "--wait", type=int, default=60, help="Place a wait between parsing posts"
     )
     return parse_post_cmd

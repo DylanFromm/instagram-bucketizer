@@ -8,8 +8,6 @@
 Useful defaults and other package metadata.
 """
 
-DESCRIPTION = (
-    "Small project to assist in research, categorizing instagram emoji usage"
-)
+DESCRIPTION = "Small project to assist in research, categorizing instagram emoji usage"
 PKG_NAME = "instagram-emoji-bucketizer"
 VERSION = "0.1.0"

@@ -47,19 +47,26 @@ class Bucketizer:
 
         self.bucket: TBucket = get_bucket(bucket)
         self.comments: Comments = []
+        self.post_code = ""
 
     def load_comments(self, comments_file: Pathlike) -> None:
         comments_file = normalize(comments_file)
         with open(comments_file, "r") as read_fd:
             data = json.load(read_fd)
-            for comment in data:
+            self.post_code = data["post_code"]
+            for comment in data["comments"]:
                 self.comments.append(self.bucket.from_comment(comment))
 
-    def write(self, output_file: Pathlike, post_id: str = "") -> None:
-        data = self.bucket.get_columns()
+    def extend(self, data: DataColumns) -> None:
         for comment in self.comments:
-            comment.to_excel(data, post_id)
+            comment.to_excel(data, self.post_code)
 
+    def get_data(self) -> DataColumns:
+        data = self.bucket.get_columns()
+        self.extend(data)
+        return data
+
+    def write(self, data: DataColumns, output_file: Pathlike) -> None:
         output_file = normalize(output_file)
         output_data = pd.DataFrame(data=data)
         output_data.to_excel(output_file)
