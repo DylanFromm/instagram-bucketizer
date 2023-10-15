@@ -4,12 +4,14 @@ Base bucket abstract class
 
 # built-in
 from abc import ABC, abstractmethod
-from typing import Dict, Generic, List, Type, TypeVar, Union
+from typing import Dict, List, Type, TypeVar, Union
 
 # third-party
 import emoji as _emoji
 from emoji import EMOJI_DATA
 
+# generic type names dont need to be snake
+# pylint: disable=invalid-name
 TBucket = TypeVar("TBucket", bound="Bucket")
 Comment = Dict[str, Union[int, str]]
 Comments = List[Comment]
@@ -30,11 +32,11 @@ for uni, edat in EMOJI_DATA.items():
     EN_EMOJI_TO_UNICODE[edat["en"]] = uni
 
 
-class Bucket(ABC, Generic[TBucket]):
+class Bucket(ABC):
     """
     Abstract class that should be able to be created from a comment
-    process, then be called on to write to a dictionary of arrays to be exported
-    to panda frame
+    process, then be called on to write to a dictionary
+    of arrays to be exported to panda frame
     """
 
     def __init__(self, comment: Comment) -> None:
@@ -42,11 +44,21 @@ class Bucket(ABC, Generic[TBucket]):
 
     @staticmethod
     def get_columns() -> DataColumns:
+        """
+        Return this bucket's columns
+        """
         return base_columns
 
     @staticmethod
     def process_emojis(comment_txt: str) -> List[str]:
-        tot_emoj = list(_emoji.analyze(_emoji.emojize(comment_txt)))
+        """
+        Get a list of available emojis in a comment
+        """
+        tot_emoj = list(
+            _emoji.analyze(
+                _emoji.emojize(comment_txt), non_emoji=False, join_emoji=True
+            )
+        )
         emojis: List[str] = []
         if tot_emoj:
             for em in tot_emoj:
@@ -61,6 +73,10 @@ class Bucket(ABC, Generic[TBucket]):
         return cls(comment)
 
     def to_excel(self, data: DataColumns, post_id: str) -> None:
+        """
+        Add general comment data, then call child impl
+        """
+
         data["post_id"].append(post_id)
         data["comment"].append(self.comment["text"])
         data["username"].append(self.comment["username"])
@@ -72,7 +88,6 @@ class Bucket(ABC, Generic[TBucket]):
     @abstractmethod
     def to_excel_impl(self, data: DataColumns) -> None:
         """
-        Given the premade data, adhereing to get_bucket_cols for each bucket
+        Given the premade data, adhereing to get bucket_cols for each bucket
         append this child classes data and return
         """
-        pass

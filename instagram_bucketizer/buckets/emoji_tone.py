@@ -1,8 +1,10 @@
+"""
+    Bucket for categorizing emoji skin tone
+    usage
+"""
+
 # built-in
 from typing import Type
-
-# third-party
-import emoji as _emoji
 
 # internal
 from instagram_bucketizer.buckets import (
@@ -24,6 +26,10 @@ skin_tone_str = [
 
 
 def get_tone_str(emoji: str):
+    """
+    Parse and return the skin tone
+    substr if available
+    """
     for tone in skin_tone_str:
         if "_" + tone in emoji:
             return tone
@@ -31,6 +37,10 @@ def get_tone_str(emoji: str):
 
 
 def is_modifiable(emoji: str) -> bool:
+    """
+    Detect if the given emoji str
+    is modifiable by skin tone
+    """
     cleaned = emoji.replace(":", "")
     for tone in skin_tone_str:
         if tone in cleaned:
@@ -42,6 +52,9 @@ def is_modifiable(emoji: str) -> bool:
 
 
 def get_base_emoji(emoji: str) -> str:
+    """
+    Strip a tone substr if available
+    """
     tone_str = get_tone_str(emoji)
     return emoji.replace(tone_str, "")
 
@@ -64,7 +77,7 @@ class SkinToneBucket(Bucket):
     """
 
     def __init__(self, comment: Comment):
-        self.comment = comment
+        super().__init__(comment)
         self.comment_text = comment["text"]
         self.emojis = Bucket.process_emojis(self.comment_text)
 
@@ -86,6 +99,9 @@ class SkinToneBucket(Bucket):
 
     @staticmethod
     def get_columns() -> DataColumns:
+        """
+        Get the data columns for this bucket
+        """
         cols = columns
         cols.update(base_columns)
         return cols

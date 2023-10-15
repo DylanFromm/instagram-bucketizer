@@ -1,10 +1,14 @@
+"""
+    Pull comments from a post(s) and place into a comments file.
+"""
+
 # built-in
 import argparse
 from datetime import datetime
 import json
 from pathlib import Path
-from typing import Any, Dict, List, Union
 import time
+from typing import Union
 
 # third-party
 import emoji
@@ -14,33 +18,48 @@ from vcorelib.args import CommandFunction
 from vcorelib.paths import normalize
 
 # internal
-from instagram_bucketizer.buckets import Comment, Comments
+from instagram_bucketizer.buckets import Comments
 
 
 def normalize_to_datestr(date: Union[str, int, datetime]) -> str:
+    """
+    Given a epoch, str, or datetime, make sure its a str
+    """
+
     if isinstance(date, str):
         return date
-    elif isinstance(date, int):
+    if isinstance(date, int):
         return datetime.fromtimestamp(date)
-    elif isinstance(date, datetime):
+    if isinstance(date, datetime):
         return str(date)
     assert False, f"Given data {date} is invalid! {type(date)}"
 
 
 def normalize_to_epoch(date: Union[str, int, datetime]) -> int:
+    """
+    Given a epoch, str, or datetime obj make sure its an int
+    """
+
     if isinstance(date, str):
         utc_time = datetime.strptime(date, "%Y-%m-%d %H:%M:%S")
         return ((utc_time) - datetime(1970, 1, 1)).total_seconds()
-    elif isinstance(date, int):
+    if isinstance(date, int):
         return date
-    elif isinstance(date, datetime):
+    if isinstance(date, datetime):
         return date.timestamp()
     assert False, f"Given data {date} is invalid! {type(date)}"
 
+
 def to_emoji_str(emoji_str: str) -> str:
+    """
+    Translate utf-16 to emoji strings
+    """
     return emoji_str.encode("utf-16-be", "surrogatepass").decode("utf-16-be")
 
-def write_post(args: argparse.ArgumentParser, post_code: str, comments: Comments) -> None:
+
+def write_post(
+    args: argparse.ArgumentParser, post_code: str, comments: Comments
+) -> None:
     """
     Write data out
     """
@@ -49,16 +68,17 @@ def write_post(args: argparse.ArgumentParser, post_code: str, comments: Comments
     sorted_data = sorted(
         comments, key=lambda x: normalize_to_epoch(x["created_at"])
     )
-    for i in range(0, len(sorted_data)):
-        sorted_data[i]["text"] = emoji.demojize(
-            to_emoji_str(sorted_data[i]["text"])
-        )
+    for data in sorted_data:
+        data["text"] = emoji.demojize(to_emoji_str(data["text"]))
 
     full_out = {"post_code": post_code, "comments": sorted_data}
     with open(
-        output_dir.joinpath(f"{args.prefix}_{post_code}.json"), "w"
+        output_dir.joinpath(f"{args.prefix}_{post_code}.json"),
+        "w",
+        encoding="UTF-8",
     ) as com_file:
         com_file.write(json.dumps(full_out, indent=4))
+
 
 def parse_post_cmd(args: argparse.Namespace):
     """
@@ -110,6 +130,7 @@ def parse_post_cmd(args: argparse.Namespace):
             for _ in tqdm(range(args.wait)):
                 time.sleep(1)
 
+
 def add_parse_post_cmd(parser: argparse.ArgumentParser) -> CommandFunction:
     """Add arbiter-command arguments to its parser."""
     parser.add_argument(
@@ -120,12 +141,16 @@ def add_parse_post_cmd(parser: argparse.ArgumentParser) -> CommandFunction:
         "--output_dir",
         type=Path,
         default=Path("."),
-        help="Path to output comments from posts, defaults to current directory",
+        help="Path to output comments from posts",
     )
     parser.add_argument(
         "-P", "--prefix", help="Output file prefix", default=""
     )
     parser.add_argument(
-        "-w", "--wait", type=int, default=60, help="Place a wait between parsing posts"
+        "-w",
+        "--wait",
+        type=int,
+        default=60,
+        help="Place a wait between parsing posts",
     )
     return parse_post_cmd

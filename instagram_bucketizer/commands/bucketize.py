@@ -12,11 +12,17 @@ from pathlib import Path
 from vcorelib.args import CommandFunction
 
 # internal
-from instagram_bucketizer.buckets.bucketizer import Bucketizer, get_available_buckets
+from instagram_bucketizer.buckets.bucketizer import (
+    Bucketizer,
+    get_available_buckets,
+)
 
 
 def bucketize_cmd(args: argparse.Namespace):
-
+    """
+    Create and extend a bucket for each posts
+    file given
+    """
 
     bucketizer = Bucketizer(args.bucket)
     bucketizer.load_comments(args.comment_files[0])
@@ -26,7 +32,7 @@ def bucketize_cmd(args: argparse.Namespace):
         next_bucket = Bucketizer(args.bucket)
         next_bucket.load_comments(comment)
         next_bucket.extend(data)
-        
+
     bucketizer.write(data, args.output_file)
 
 
@@ -40,9 +46,13 @@ def add_bucketize_cmd(parser: argparse.ArgumentParser) -> CommandFunction:
         "-o",
         type=Path,
         default=Path("output.xlsx"),
-        help="Path to output comments loaded from a post, defaults output.xlsx",
+        help="Path to output comments loaded from a post",
     )
-    parser.add_argument("--bucket", "-b", 
-                        help=f"Available: {get_available_buckets()}",
-                        required=True, type=str)
+    parser.add_argument(
+        "--bucket",
+        "-b",
+        help=f"Available: {get_available_buckets()}",
+        required=True,
+        type=str,
+    )
     return bucketize_cmd
