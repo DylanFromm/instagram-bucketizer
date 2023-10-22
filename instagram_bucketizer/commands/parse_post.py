@@ -12,7 +12,7 @@ from typing import Union
 
 # third-party
 import emoji
-import instaloader
+from instaloader import Instaloader, Post  # type: ignore [attr-defined]
 from tqdm import tqdm
 from vcorelib.args import CommandFunction
 from vcorelib.paths import normalize
@@ -29,13 +29,13 @@ def normalize_to_datestr(date: Union[str, int, datetime]) -> str:
     if isinstance(date, str):
         return date
     if isinstance(date, int):
-        return datetime.fromtimestamp(date)
+        return str(datetime.fromtimestamp(date))
     if isinstance(date, datetime):
         return str(date)
     assert False, f"Given data {date} is invalid! {type(date)}"
 
 
-def normalize_to_epoch(date: Union[str, int, datetime]) -> int:
+def normalize_to_epoch(date: Union[str, float, int, datetime]) -> float:
     """
     Given a epoch, str, or datetime obj make sure its an int
     """
@@ -44,9 +44,11 @@ def normalize_to_epoch(date: Union[str, int, datetime]) -> int:
         utc_time = datetime.strptime(date, "%Y-%m-%d %H:%M:%S")
         return ((utc_time) - datetime(1970, 1, 1)).total_seconds()
     if isinstance(date, int):
-        return date
+        return float(date)
     if isinstance(date, datetime):
         return date.timestamp()
+    if isinstance(date, float):
+        return date
     assert False, f"Given data {date} is invalid! {type(date)}"
 
 
@@ -58,7 +60,7 @@ def to_emoji_str(emoji_str: str) -> str:
 
 
 def write_post(
-    args: argparse.ArgumentParser, post_code: str, comments: Comments
+    args: argparse.Namespace, post_code: str, comments: Comments
 ) -> None:
     """
     Write data out
@@ -69,7 +71,7 @@ def write_post(
         comments, key=lambda x: normalize_to_epoch(x["created_at"])
     )
     for data in sorted_data:
-        data["text"] = emoji.demojize(to_emoji_str(data["text"]))
+        data["text"] = emoji.demojize(to_emoji_str(str(data["text"])))
 
     full_out = {"post_code": post_code, "comments": sorted_data}
     with open(
@@ -85,11 +87,11 @@ def parse_post_cmd(args: argparse.Namespace):
     for each post code, get data, load into dictionary and return
     """
     assert args.username, "No username provided!"
-    loader = instaloader.Instaloader()
+    loader = Instaloader()
     loader.load_session_from_file(args.username)
 
     for post_code in args.post_codes:
-        post = instaloader.Post.from_shortcode(loader.context, post_code)
+        post = Post.from_shortcode(loader.context, post_code)
         print(f"Loading comments from {post_code}")
         with loader.context.error_catcher("Comment Parsing:"):
             ret_data: Comments = []
@@ -104,7 +106,7 @@ def parse_post_cmd(args: argparse.Namespace):
                             "text": comment.text,
                             "username": comment.owner.username,
                             "likes_count": comment.likes_count,
-                            "answers": sorted(
+                            "answers": sorted(  # type: ignore[dict-item]
                                 [
                                     {
                                         "id": answer.id,

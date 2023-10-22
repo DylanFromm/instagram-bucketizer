@@ -4,11 +4,11 @@ Base bucket abstract class
 
 # built-in
 from abc import ABC, abstractmethod
-from typing import Dict, List, Type, TypeVar, Union
+from typing import Dict, List, Type, TypeVar, Union, cast
 
 # third-party
 import emoji as _emoji
-from emoji import EMOJI_DATA
+from emoji import EMOJI_DATA, EmojiMatch
 
 # generic type names dont need to be snake
 # pylint: disable=invalid-name
@@ -62,6 +62,8 @@ class Bucket(ABC):
         emojis: List[str] = []
         if tot_emoj:
             for em in tot_emoj:
+                assert isinstance(em.value, EmojiMatch)
+                assert em.value.data
                 emojis.append(em.value.data["en"])
         return emojis
 
@@ -82,7 +84,9 @@ class Bucket(ABC):
         data["username"].append(self.comment["username"])
         data["datetime"].append(self.comment["created_at"])
         data["likes"].append(self.comment["likes_count"])
-        data["replies"].append(len(self.comment["answers"]))
+        data["replies"].append(
+            len(cast(List[Comment], self.comment["answers"]))
+        )
         self.to_excel_impl(data)
 
     @abstractmethod

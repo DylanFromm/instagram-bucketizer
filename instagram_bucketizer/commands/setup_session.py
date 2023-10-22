@@ -1,21 +1,22 @@
 """
     Setup a session file based on web browser cookies
 """
+# This command is a workaround for instaloader
+# and thus contains some improper accesses etc..
+# see https://instaloader.github.io/troubleshooting.html
+# mypy: ignore-errors
 
+# built-in
 import argparse
 from glob import glob
 from os.path import expanduser
 from platform import system
 from sqlite3 import OperationalError, connect
 
-from vcorelib.args import CommandFunction
+from instaloader import ConnectionException, Instaloader
 
-try:
-    from instaloader import ConnectionException, Instaloader
-except ModuleNotFoundError as exc:
-    raise ModuleNotFoundError(
-        "Instaloader not found.\n  pip install [--user] instaloader"
-    ) from exc
+# third-party
+from vcorelib.args import CommandFunction
 
 WINDOWS_PATH = (
     "~/AppData/Roaming/" + "Mozilla/Firefox/Profiles/*/cookies.sqlite"

@@ -4,7 +4,7 @@
 """
 
 # built-in
-from typing import Type
+from typing import Any, Dict, List, Type, cast
 
 # internal
 from instagram_bucketizer.buckets import (
@@ -59,7 +59,7 @@ def get_base_emoji(emoji: str) -> str:
     return emoji.replace(tone_str, "")
 
 
-columns = {
+columns: Dict[str, List[Any]] = {
     "Emoji Total": [],
     "Emoji Modifiable": [],
     "Emoji Skin Neutral": [],
@@ -79,7 +79,7 @@ class SkinToneBucket(Bucket):
     def __init__(self, comment: Comment):
         super().__init__(comment)
         self.comment_text = comment["text"]
-        self.emojis = Bucket.process_emojis(self.comment_text)
+        self.emojis = Bucket.process_emojis(cast(str, self.comment_text))
 
         self.total_emoji = len(self.emojis)
         self.tone_emoji_counts = {tone: 0 for tone in skin_tone_str}

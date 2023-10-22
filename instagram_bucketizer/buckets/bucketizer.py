@@ -12,7 +12,7 @@ import pandas as pd
 from vcorelib.paths import Pathlike, normalize
 
 # internal
-from instagram_bucketizer.buckets import Bucket, Comments, DataColumns, TBucket
+from instagram_bucketizer.buckets import Bucket, DataColumns
 
 # This is used in detecting bucket subclasses
 # pylint: disable=unused-import
@@ -27,7 +27,7 @@ def get_available_buckets() -> List[str]:
     return [cls.__name__ for cls in Bucket.__subclasses__()]
 
 
-def get_bucket(name: str) -> TBucket:
+def get_bucket(name: str) -> type[Bucket]:
     """
     Get a bucket class from string
     """
@@ -52,8 +52,8 @@ class Bucketizer:
             bucket in available
         ), f"Bucket {bucket} not in availble bucket!\n available: {available}!"
 
-        self.bucket: TBucket = get_bucket(bucket)
-        self.comments: Comments = []
+        self.bucket: type[Bucket] = get_bucket(bucket)
+        self.comments: List[Bucket] = []
         self.post_code = ""
 
     def load_comments(self, comments_file: Pathlike) -> None:
