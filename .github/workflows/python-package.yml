@@ -18,14 +18,11 @@ jobs:
     strategy:
       matrix:
         python-version:
-          - "3.8"
-          - "3.9"
           - "3.10"
           - "3.11"
         system:
           - ubuntu-latest
           - macos-latest
-          - windows-latest
     env:
       PYTHON_VERSION: ${{matrix.python-version}}
     steps:
